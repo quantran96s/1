@@ -480,8 +480,6 @@ async def StarTinG():
 
 if __name__ == '__main__':
     try:
-        subprocess.Popen([sys.executable, 'web_panel.py'])
-
         asyncio.run(StarTinG())
     except KeyboardInterrupt:
         print("\nBot shutting down.")
