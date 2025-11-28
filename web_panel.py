@@ -1,22 +1,27 @@
 import requests
 import json
-import subprocess
-import sys
+import os
 from flask import Flask, render_template, request, flash, redirect, url_for
+
+# Nếu main.py có thể chạy như một module Python, import nó
+try:
+    import main  # giả sử main.py có thể import và tự chạy main() khi import
+except Exception as e:
+    print(f"Could not import main.py: {e}")
 
 app = Flask(__name__)
 app.secret_key = 'asuwishmynigga' 
 
+# Lấy port từ Render (hoặc mặc định 5000 nếu chạy local)
+PORT = int(os.environ.get("PORT", 5000))
 BOT_API_URL = "http://127.0.0.1:8080/command"
 
 @app.route('/')
 def index():
-    """Renders the main control panel page."""
     return render_template('index.html')
 
 @app.route('/action', methods=['POST'])
 def handle_action():
-    """Handles all form submissions from the new UI."""
     try:
         action = request.form.get('action')
         payload_str = request.form.get('payload')
@@ -26,7 +31,6 @@ def handle_action():
             return redirect(url_for('index'))
 
         bot_payload = {'action': action}
-        
         data = json.loads(payload_str)
 
         if action == 'emote':
@@ -79,14 +83,5 @@ def handle_action():
 
 if __name__ == '__main__':
     print("CLOUD ENGINE Bot Web Panel")
-
-    # Khởi chạy main.py
-    try:
-        print("Starting main.py...")
-        # subprocess.Popen để chạy main.py dưới dạng tiến trình nền
-        subprocess.Popen([sys.executable, 'main.py'])
-    except Exception as e:
-        print(f"Failed to start main.py: {e}")
-
-    print("Open your web browser and go to http://127.0.0.1:5000")
-    app.run(host='127.0.0.1', port=5000)
+    print(f"Open your web browser and go to http://localhost:{PORT}")
+    app.run(host='0.0.0.0', port=PORT)
