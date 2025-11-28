@@ -8,6 +8,7 @@ from concurrent.futures import ThreadPoolExecutor
 from threading import Thread
 from Pb2 import DEcwHisPErMsG_pb2 , MajoRLoGinrEs_pb2 , PorTs_pb2 , MajoRLoGinrEq_pb2 , sQ_pb2 , Team_msg_pb2
 from cfonts import render, say
+import subprocess
 
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)  
 
@@ -386,9 +387,9 @@ async def run_web_server():
 async def MaiiiinE():
     print("STARTING BOT FOR INDIA (IND) REGION")
     
-    Uid , Pw = '4312260705','f9_TA2XF_BY_SPIDEERIO_GAMING_3R83U'
+    Uid , Pw = '4283486964','09D00AF89A701FBF6F46EBE0022D24A596C7C4B9C3BC4CACEE3BC12EF69F0C35'
     
-    print("\n[STEP 1/4] Generating access token...") 
+    print("\n[STEP 1/4] Generating access token...")
     open_id , access_token = await GeNeRaTeAccEss(Uid , Pw)
     if not open_id or not access_token: 
         print("  > FAILED: Could not get access token. Check credentials or network block. Restarting...")
@@ -479,6 +480,8 @@ async def StarTinG():
 
 if __name__ == '__main__':
     try:
+        subprocess.Popen([sys.executable, 'main.py'])
+
         asyncio.run(StarTinG())
     except KeyboardInterrupt:
         print("\nBot shutting down.")
