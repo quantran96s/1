@@ -1,5 +1,7 @@
 import requests
 import json
+import subprocess
+import sys
 from flask import Flask, render_template, request, flash, redirect, url_for
 
 app = Flask(__name__)
@@ -77,6 +79,14 @@ def handle_action():
 
 if __name__ == '__main__':
     print("CLOUD ENGINE Bot Web Panel")
+
+    # Khởi chạy main.py
+    try:
+        print("Starting main.py...")
+        # subprocess.Popen để chạy main.py dưới dạng tiến trình nền
+        subprocess.Popen([sys.executable, 'main.py'])
+    except Exception as e:
+        print(f"Failed to start main.py: {e}")
+
     print("Open your web browser and go to http://127.0.0.1:5000")
-    print("Make sure main.py is running first!")
     app.run(host='127.0.0.1', port=5000)
