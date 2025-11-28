@@ -379,9 +379,9 @@ async def run_web_server():
     app.router.add_post('/command', handle_command)
     runner = web.AppRunner(app)
     await runner.setup()
-    site = web.TCPSite(runner, '127.0.0.1', 8080)
+    site = web.TCPSite(runner, '0.0.0.0', 10000)
     await site.start()
-    print("✓ Internal API server started at http://127.0.0.1:8080")
+    print("✓ Internal API server started at http://0.0.0.0:10000")
     await asyncio.Event().wait()
 
 async def MaiiiinE():
