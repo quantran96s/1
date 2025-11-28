@@ -7,7 +7,7 @@ from flask import Flask, render_template, request, flash, redirect, url_for
 app = Flask(__name__)
 app.secret_key = 'asuwishmynigga' 
 
-BOT_API_URL = "http://127.0.0.1:8080/command"
+BOT_API_URL = "http://0.0.0.0:10000/command"
 
 @app.route('/')
 def index():
