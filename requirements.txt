@@ -1,0 +1,9 @@
+Flask==2.3.6
+requests==2.31.0
+aiohttp==3.9.8
+protobuf==4.24.3
+pyjwt==2.8.0
+psutil==5.9.5
+cfonts==0.0.6
+pytz==2025.7
+urllib3==2.0.6
